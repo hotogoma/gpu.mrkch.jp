@@ -1,0 +1,19 @@
+version: '2.4'
+
+services:
+
+  jupyter-lab:
+    build: .
+    runtime: nvidia
+    ports:
+      - 8888:8888
+    volumes:
+      - ~/notebooks:/notebooks
+    command: >-
+      jupyter lab
+        --LabApp.allow_root=True
+        --LabApp.answer_yes=True
+        --LabApp.ip=0.0.0.0
+        --LabApp.notebook_dir=/notebooks
+        --LabApp.token=''
+        --LabApp.allow_origin='https://colab.research.google.com'
